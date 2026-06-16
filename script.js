@@ -3,7 +3,6 @@
     const html = document.documentElement;
     const saved = localStorage.getItem('jjka-theme');
 
-    // Appliquer immédiatement pour éviter le flash
     if (saved === 'dark') {
         html.setAttribute('data-theme', 'dark');
     } else {
@@ -11,7 +10,6 @@
         localStorage.setItem('jjka-theme', 'light');
     }
 
-    // Brancher le bouton après chargement du DOM
     document.addEventListener('DOMContentLoaded', () => {
         const themeToggle = document.getElementById('themeToggle');
         if (!themeToggle) return;
@@ -29,7 +27,6 @@
             );
         }
 
-        // Initialiser le label
         const currentTheme = html.hasAttribute('data-theme') ? 'dark' : 'light';
         applyTheme(currentTheme);
 
@@ -40,7 +37,54 @@
     });
 })();
 
-// Éléments DOM
+/* ── TYPING ANIMATION ── */
+document.addEventListener('DOMContentLoaded', () => {
+    const typingEl = document.getElementById('typing-text');
+    if (!typingEl) return;
+
+    const roles = [
+        'Étudiant Cybersécurité & Réseaux',
+        'CTF Player · picoCTF & TryHackMe',
+        'Cyberanalyste Junior (Cisco)',
+        'Développeur Python',
+    ];
+
+    let roleIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const SPEED_TYPE = 60;
+    const SPEED_DELETE = 35;
+    const PAUSE_END = 1800;
+    const PAUSE_START = 400;
+
+    function type() {
+        const current = roles[roleIndex];
+        if (isDeleting) {
+            typingEl.textContent = current.slice(0, charIndex - 1);
+            charIndex--;
+        } else {
+            typingEl.textContent = current.slice(0, charIndex + 1);
+            charIndex++;
+        }
+
+        let delay = isDeleting ? SPEED_DELETE : SPEED_TYPE;
+
+        if (!isDeleting && charIndex === current.length) {
+            delay = PAUSE_END;
+            isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            roleIndex = (roleIndex + 1) % roles.length;
+            delay = PAUSE_START;
+        }
+
+        setTimeout(type, delay);
+    }
+
+    setTimeout(type, 700);
+});
+
+/* ── DOM ELEMENTS ── */
 const menuToggle = document.querySelector('.menu-toggle');
 const navLinks = document.querySelector('.nav-links');
 const navAnchors = document.querySelectorAll('.nav-link');
@@ -52,10 +96,9 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
 
 let toastTimer;
 
-// Fonction toast
+/* ── TOAST ── */
 const showToast = (message) => {
     if (!toast) return;
-    
     toast.textContent = message;
     toast.classList.add('is-visible');
     clearTimeout(toastTimer);
@@ -64,7 +107,7 @@ const showToast = (message) => {
     }, 2600);
 };
 
-// Menu mobile
+/* ── MENU MOBILE ── */
 if (menuToggle && navLinks) {
     menuToggle.addEventListener('click', () => {
         navLinks.classList.toggle('active');
@@ -87,17 +130,14 @@ if (menuToggle && navLinks) {
     });
 }
 
-// Animation des barres de compétences
+/* ── SKILL BARS ── */
 const animateSkills = () => {
     document.querySelectorAll('.skill-level').forEach((skill) => {
         const level = skill.getAttribute('data-level');
-        if (level) {
-            skill.style.width = `${level}%`;
-        }
+        if (level) skill.style.width = `${level}%`;
     });
 };
 
-// Observer pour les compétences
 const skillsSection = document.querySelector('.skills');
 if (skillsSection) {
     const skillObserver = new IntersectionObserver((entries, observer) => {
@@ -108,21 +148,18 @@ if (skillsSection) {
             }
         });
     }, { threshold: 0.35 });
-
     skillObserver.observe(skillsSection);
 }
 
-// Compteurs de statistiques
+/* ── STAT COUNTERS ── */
 const statNumbers = document.querySelectorAll('.stat-number[data-count]');
 
 const animateCounter = (element) => {
     const target = parseInt(element.getAttribute('data-count'), 10);
     if (Number.isNaN(target)) return;
-
     const duration = 1600;
     const step = target / (duration / 16);
     let current = 0;
-
     const timer = setInterval(() => {
         current += step;
         if (current >= target) {
@@ -134,7 +171,6 @@ const animateCounter = (element) => {
     }, 16);
 };
 
-// Observer pour les statistiques
 const statsSection = document.querySelector('.stats');
 if (statsSection) {
     const observerStats = new IntersectionObserver((entries, observer) => {
@@ -145,11 +181,10 @@ if (statsSection) {
             }
         });
     }, { threshold: 0.4 });
-
     observerStats.observe(statsSection);
 }
 
-// Filtrage des projets
+/* ── PROJECT FILTER ── */
 const filterButtons = document.querySelectorAll('.filter-btn');
 const allProjects = document.querySelectorAll('.project-card');
 
@@ -168,14 +203,10 @@ filterButtons.forEach((button) => {
             if (shouldShow) {
                 visibleCount += 1;
                 project.classList.remove('is-hidden');
-                requestAnimationFrame(() => {
-                    project.classList.remove('is-fading');
-                });
+                requestAnimationFrame(() => project.classList.remove('is-fading'));
             } else {
                 project.classList.add('is-fading');
-                setTimeout(() => {
-                    project.classList.add('is-hidden');
-                }, 200);
+                setTimeout(() => project.classList.add('is-hidden'), 200);
             }
         });
 
@@ -183,60 +214,78 @@ filterButtons.forEach((button) => {
     });
 });
 
-// Formulaire de contact
+/* ── CONTACT FORM (EmailJS) ──
+   1. Crée un compte sur https://emailjs.com (gratuit)
+   2. Crée un service Email (Gmail, Outlook…)  → note le SERVICE_ID
+   3. Crée un template avec les variables : {{from_name}}, {{reply_to}}, {{message}}
+      → note le TEMPLATE_ID
+   4. Remplace VOTRE_SERVICE_ID et VOTRE_TEMPLATE_ID ci-dessous
+   5. Dans le <head> de index.html, remplace VOTRE_PUBLIC_KEY par ta clé publique EmailJS
+*/
 const contactForm = document.getElementById('contactForm');
+const submitBtn = document.getElementById('submitBtn');
+const submitBtnText = document.getElementById('submitBtnText');
+
 if (contactForm) {
-    contactForm.addEventListener('submit', (event) => {
+    contactForm.addEventListener('submit', async (event) => {
         event.preventDefault();
 
-        const formData = new FormData(contactForm);
-        const name = String(formData.get('name') || '').trim();
-        const email = String(formData.get('email') || '').trim();
-        const message = String(formData.get('message') || '').trim();
+        const name    = contactForm.from_name.value.trim();
+        const email   = contactForm.reply_to.value.trim();
+        const message = contactForm.message.value.trim();
 
         if (!name || !email || !message) {
             showToast('Merci de remplir tous les champs.');
             return;
         }
 
-        const subject = encodeURIComponent(`Contact portfolio - ${name}`);
-        const body = encodeURIComponent(`Nom: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
-        const mailtoLink = `mailto:junioragbenonzan31@gmail.com?subject=${subject}&body=${body}`;
+        // UI loading
+        if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtnText.textContent = 'Envoi en cours…';
+        }
 
-        window.location.href = mailtoLink;
-        contactForm.reset();
-        showToast('Votre application email va s\'ouvrir.');
+        try {
+            await emailjs.send(
+                'VOTRE_SERVICE_ID',   // ← remplace par ton Service ID EmailJS
+                'VOTRE_TEMPLATE_ID',  // ← remplace par ton Template ID EmailJS
+                { from_name: name, reply_to: email, message }
+            );
+            showToast('✅ Message envoyé avec succès !');
+            contactForm.reset();
+        } catch (err) {
+            console.error('EmailJS error:', err);
+            // Fallback : ouvrir le client mail
+            const subject = encodeURIComponent(`Contact portfolio – ${name}`);
+            const body    = encodeURIComponent(`Nom: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+            window.location.href = `mailto:junioragbenonzan31@gmail.com?subject=${subject}&body=${body}`;
+            showToast('Ouverture de votre application email…');
+        } finally {
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtnText.textContent = 'Envoyer le Message';
+            }
+        }
     });
 }
 
-// Révélation au scroll
+/* ── SCROLL REVEAL ── */
 const revealGroups = [
-    '.hero-text > *',
-    '.hero-image',
-    '.stat-item',
-    '.about-text > *',
-    '.info-item',
-    '.tag',
-    '.skill-category',
-    '.project-card',
-    '.category',
-    '.timeline-item',
-    '.contact-item',
-    '.contact-form',
-    '.cert-card'
+    '.hero-text > *', '.hero-image', '.stat-item',
+    '.about-text > *', '.info-item', '.tag', '.skill-category',
+    '.project-card', '.category', '.timeline-item', '.contact-item',
+    '.contact-form', '.cert-card', '.ctf-cat-card', '.ctf-platform-card',
+    '.cisco-module'
 ];
 
 const revealElements = document.querySelectorAll(revealGroups.join(', '));
 
 if (prefersReducedMotion) {
-    revealElements.forEach((element) => {
-        element.classList.add('is-visible');
-    });
+    revealElements.forEach((el) => el.classList.add('is-visible'));
 } else {
-    revealElements.forEach((element, index) => {
-        element.classList.add('reveal');
-        const delay = (index % 8) * 70;
-        element.style.transitionDelay = `${delay}ms`;
+    revealElements.forEach((el, i) => {
+        el.classList.add('reveal');
+        el.style.transitionDelay = `${(i % 8) * 70}ms`;
     });
 
     const revealObserver = new IntersectionObserver((entries, observer) => {
@@ -246,82 +295,73 @@ if (prefersReducedMotion) {
                 observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.2 });
+    }, { threshold: 0.15 });
 
-    revealElements.forEach((element) => revealObserver.observe(element));
+    revealElements.forEach((el) => revealObserver.observe(el));
 }
 
-// Animation des éléments flottants
-const floatingElements = document.querySelectorAll('.floating-element');
-floatingElements.forEach((element, index) => {
-    element.style.animationDelay = `${index * 2}s`;
+/* ── FLOATING ELEMENTS ── */
+document.querySelectorAll('.floating-element').forEach((el, i) => {
+    el.style.animationDelay = `${i * 2}s`;
 });
 
-// Barre de progression du scroll
+/* ── SCROLL PROGRESS ── */
 const updateScrollProgress = () => {
     if (!scrollProgress) return;
-
     const max = document.documentElement.scrollHeight - window.innerHeight;
     const progress = max > 0 ? (window.scrollY / max) * 100 : 0;
     scrollProgress.style.width = `${Math.min(100, Math.max(0, progress))}%`;
 };
 
-// État de la navbar au scroll
+/* ── NAVBAR STATE ── */
 const toggleHeaderState = () => {
     if (!navbar) return;
     navbar.classList.toggle('is-scrolled', window.scrollY > 80);
 };
 
-// Visibilité du bouton retour en haut
+/* ── BACK TO TOP VISIBILITY ── */
 const toggleBackToTop = () => {
     if (!backToTop) return;
     backToTop.classList.toggle('is-visible', window.scrollY > 600);
 };
 
-// Initialisation
+// Init
 updateScrollProgress();
 toggleHeaderState();
 toggleBackToTop();
 
-// Écouteurs d'événements scroll
 window.addEventListener('scroll', () => {
     toggleHeaderState();
     updateScrollProgress();
     toggleBackToTop();
 });
 
-// Retour en haut
 if (backToTop) {
     backToTop.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: prefersReducedMotion ? 'auto' : 'smooth'
-        });
+        window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
     });
 }
 
-// Navigation active au scroll
+/* ── ACTIVE NAV ON SCROLL ── */
 const sections = Array.from(navAnchors)
-    .map((anchor) => document.querySelector(anchor.getAttribute('href')))
+    .map((a) => document.querySelector(a.getAttribute('href')))
     .filter(Boolean);
 
 if (sections.length && navAnchors.length) {
     const sectionObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
             if (!entry.isIntersecting) return;
-
             const activeId = `#${entry.target.id}`;
             navAnchors.forEach((link) => {
-                const isActive = link.getAttribute('href') === activeId;
-                link.classList.toggle('is-active', isActive);
+                link.classList.toggle('is-active', link.getAttribute('href') === activeId);
             });
         });
     }, { rootMargin: '-42% 0px -45% 0px', threshold: 0.01 });
 
-    sections.forEach((section) => sectionObserver.observe(section));
+    sections.forEach((s) => sectionObserver.observe(s));
 }
 
-// Effet parallax sur la section hero (si animations non réduites)
+/* ── PARALLAX HERO ── */
 if (!prefersReducedMotion) {
     const hero = document.querySelector('.hero');
     const parallaxTargets = document.querySelectorAll('.orb, .floating-element');
@@ -331,7 +371,6 @@ if (!prefersReducedMotion) {
             const rect = hero.getBoundingClientRect();
             const x = (event.clientX - rect.left) / rect.width - 0.5;
             const y = (event.clientY - rect.top) / rect.height - 0.5;
-
             parallaxTargets.forEach((node, index) => {
                 const depth = (index % 3 + 1) * 4;
                 node.style.transform = `translate(${x * depth}px, ${y * depth}px)`;
@@ -339,9 +378,7 @@ if (!prefersReducedMotion) {
         });
 
         hero.addEventListener('mouseleave', () => {
-            parallaxTargets.forEach((node) => {
-                node.style.transform = '';
-            });
+            parallaxTargets.forEach((node) => { node.style.transform = ''; });
         });
     }
 }

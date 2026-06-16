@@ -684,7 +684,7 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; line-height: 1.15; }
 .back-to-top.is-visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
 .back-to-top:hover { background: rgba(64,96,232,0.1); border-color: var(--primary); transform: translateY(-3px); box-shadow: 0 12px 26px var(--primary-glow); }
 [data-theme="dark"] .back-to-top:hover { background: rgba(108,141,255,0.15); }
-.toast { position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%) translateY(20px); background: var(--bg-elevated); color: var(--ink); border: 1px solid var(--border-light); padding: 10px 20px; border-radius: var(--radius); box-shadow: var(--shadow-md); font-size: 0.9rem; font-weight: 500; opacity: 0; pointer-events: none; transition: var(--transition); z-index: 1300; white-space: nowrap; }
+.toast { position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%) translateY(20px); background: var(--bg-elevated); color: var(--ink); border: 1px solid var(--border-light); padding: 10px 20px; border-radius: var(--radius); box-shadow: var(--shadow-md); font-size: 0.9rem; font-weight: 500; opacity: 0; pointer-events: none; transition: var(--transition); z-index: 1300; white-space: normal; max-width: calc(100vw - 48px); text-align: center; }
 .toast.is-visible { opacity: 1; transform: translateX(-50%) translateY(0); }
 
 /* ════════════════ KEYFRAMES ════════════════ */
@@ -776,4 +776,162 @@ h1, h2, h3, h4 { font-family: 'Syne', sans-serif; line-height: 1.15; }
     .ring-outer { width: 288px; height: 288px; } .ring-mid { width: 246px; height: 246px; } .ring-inner { width: 202px; height: 202px; }
     .crosshair-h { width: 202px; } .crosshair-v { height: 202px; }
     .orbit::before { width: 295px; height: 295px; }
+}
+/* ════════════════ TYPING CURSOR ════════════════ */
+.typing-cursor {
+    display: inline-block;
+    color: var(--accent);
+    animation: blink 0.75s step-end infinite;
+    font-weight: 300;
+    margin-left: 1px;
+}
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+/* ════════════════ CTF SECTION ════════════════ */
+.ctf-section { background: var(--bg-card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+.ctf-intro { max-width: 760px; margin: 0 auto 48px; text-align: center; }
+.ctf-intro > p { color: var(--ink-soft); font-size: 1.02rem; line-height: 1.8; margin-bottom: 28px; }
+
+.ctf-platforms { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.ctf-platform-card {
+    display: flex; align-items: center; gap: 14px;
+    padding: 14px 20px; background: var(--bg-elevated);
+    border: 1px solid var(--border); border-radius: var(--radius-lg);
+    transition: var(--transition); text-decoration: none; color: var(--ink);
+    min-width: 220px; flex: 1; max-width: 280px;
+}
+.ctf-platform-card:hover { border-color: var(--border-light); transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.ctf-platform-icon {
+    width: 46px; height: 46px; border-radius: 12px; flex-shrink: 0;
+    background: rgba(64,96,232,0.1); border: 1px solid var(--border-light);
+    display: grid; place-items: center; font-size: 1.2rem; color: var(--primary);
+}
+.ctf-platform-icon.thm-icon { background: rgba(0,158,136,0.1); color: var(--accent); border-color: rgba(0,158,136,0.2); }
+.ctf-platform-icon.pico-icon { background: rgba(217,119,6,0.1); color: var(--gold); border-color: rgba(217,119,6,0.2); }
+[data-theme="dark"] .ctf-platform-icon { background: rgba(108,141,255,0.12); }
+[data-theme="dark"] .ctf-platform-icon.thm-icon { background: rgba(0,212,180,0.12); border-color: rgba(0,212,180,0.25); }
+[data-theme="dark"] .ctf-platform-icon.pico-icon { background: rgba(255,181,71,0.1); border-color: rgba(255,181,71,0.2); }
+.ctf-platform-info { display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0; }
+.ctf-platform-name { font-weight: 700; font-size: 0.92rem; color: var(--ink); }
+.ctf-platform-sub { font-size: 0.78rem; color: var(--ink-soft); }
+.ctf-platform-arrow { color: var(--ink-muted); font-size: 0.8rem; flex-shrink: 0; }
+
+.ctf-categories-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; margin-bottom: 48px; }
+.ctf-cat-card {
+    background: var(--bg-elevated); padding: 24px 20px;
+    border-radius: var(--radius-lg); border: 1px solid var(--border);
+    transition: var(--transition); position: relative; overflow: hidden;
+}
+.ctf-cat-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    opacity: 0; transition: opacity var(--transition);
+}
+.ctf-cat-card:hover::before { opacity: 1; }
+.ctf-cat-card:hover { border-color: var(--border-light); transform: translateY(-5px); box-shadow: var(--shadow-md); }
+.ctf-cat-icon {
+    width: 50px; height: 50px; background: rgba(64,96,232,0.08);
+    border: 1px solid var(--border-light); border-radius: 12px;
+    display: grid; place-items: center; font-size: 1.2rem; color: var(--primary);
+    margin-bottom: 16px; transition: var(--transition);
+}
+[data-theme="dark"] .ctf-cat-icon { background: rgba(108,141,255,0.1); }
+.ctf-cat-card:hover .ctf-cat-icon { background: rgba(64,96,232,0.15); box-shadow: 0 0 18px var(--primary-glow); }
+.ctf-cat-card h3 { font-size: 0.96rem; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+.ctf-cat-card p { color: var(--ink-soft); font-size: 0.84rem; line-height: 1.6; margin-bottom: 14px; }
+.ctf-cat-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.ctf-cat-tags span {
+    font-size: 0.72rem; font-weight: 700; padding: 3px 10px; border-radius: 999px;
+    background: rgba(0,158,136,0.07); border: 1px solid rgba(0,158,136,0.2); color: var(--accent);
+}
+[data-theme="dark"] .ctf-cat-tags span { background: rgba(0,212,180,0.09); border-color: rgba(0,212,180,0.22); }
+
+/* Cisco Track */
+.cisco-track {
+    background: var(--bg-elevated); border: 1px solid var(--border-light);
+    border-radius: var(--radius-xl); padding: 32px 36px;
+    position: relative; overflow: hidden;
+}
+.cisco-track::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+}
+.cisco-track-header {
+    display: flex; align-items: center; gap: 16px; margin-bottom: 28px; flex-wrap: wrap;
+}
+.cisco-track-icon {
+    width: 52px; height: 52px; flex-shrink: 0;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    border-radius: 14px; display: grid; place-items: center;
+    color: #fff; font-size: 1.3rem; box-shadow: 0 8px 20px var(--primary-glow);
+}
+.cisco-track-header h3 { font-size: 1.1rem; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+.cisco-track-header p { color: var(--ink-soft); font-size: 0.86rem; }
+.cisco-track-badge {
+    margin-left: auto; padding: 5px 14px; border-radius: 999px; font-size: 0.75rem;
+    font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase;
+    background: rgba(245,158,11,0.1); color: #d97706; border: 1px solid rgba(245,158,11,0.3);
+}
+[data-theme="dark"] .cisco-track-badge { color: #fbbf24; border-color: rgba(245,158,11,0.25); }
+
+.cisco-track-modules { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+.cisco-module {
+    display: flex; align-items: center; gap: 12px; padding: 12px 16px;
+    border-radius: var(--radius); border: 1px solid var(--border);
+    background: var(--bg-card); transition: var(--transition);
+}
+.cisco-module:hover { border-color: var(--border-light); box-shadow: var(--shadow-sm); }
+.cisco-module-dot {
+    width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+    background: var(--ink-muted);
+}
+.cisco-module--done .cisco-module-dot { background: var(--accent); box-shadow: 0 0 8px var(--accent-glow); }
+.cisco-module--active .cisco-module-dot { background: var(--primary); box-shadow: 0 0 8px var(--primary-glow); animation: pulse 2s ease-in-out infinite; }
+.cisco-module--pending .cisco-module-dot { background: var(--ink-muted); }
+.cisco-module-content { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.cisco-module-name { font-size: 0.84rem; font-weight: 600; color: var(--ink); line-height: 1.3; }
+.cisco-module-status { font-size: 0.72rem; font-weight: 700; }
+.cisco-module-status.done { color: var(--accent); }
+.cisco-module-status.active { color: var(--primary); }
+.cisco-module-status.pending { color: var(--ink-muted); }
+
+/* ════════════════ PRINT STYLES ════════════════ */
+@media print {
+    .navbar, .back-to-top, .toast, .scroll-progress, .hero-ornaments,
+    .orbit, .floating-elements, .hero-scroll-hint, .project-filter,
+    .ctf-platforms, .cisco-track, .contact-form { display: none !important; }
+    body { font-size: 12pt; color: #000; background: #fff; }
+    .hero { min-height: auto; padding: 40px 0 20px; background: none; }
+    .hero-content { grid-template-columns: 1fr; }
+    .hero-image { display: none; }
+    a[href]::after { content: " (" attr(href) ")"; font-size: 0.75em; color: #555; }
+    section { padding: 24px 0; page-break-inside: avoid; }
+    .section-title { font-size: 18pt; }
+}
+
+/* ════════════════ RESPONSIVE — MOBILE FIXES ════════════════ */
+@media (max-width: 1024px) {
+    .ctf-categories-grid { grid-template-columns: repeat(2,1fr); }
+    .cisco-track-modules { grid-template-columns: repeat(2,1fr); }
+    .ctf-platforms { flex-direction: column; align-items: center; }
+    .ctf-platform-card { max-width: 100%; width: 100%; }
+}
+
+@media (max-width: 768px) {
+    .ctf-categories-grid { grid-template-columns: repeat(2,1fr); }
+    .cisco-track { padding: 24px 20px; }
+    .cisco-track-modules { grid-template-columns: 1fr; }
+    .cisco-track-badge { margin-left: 0; }
+    /* Footer tap targets */
+    .footer-links { justify-content: center; }
+    .footer-links a { padding: 8px 14px; min-height: 44px; display: flex; align-items: center; }
+}
+
+@media (max-width: 520px) {
+    .ctf-categories-grid { grid-template-columns: 1fr; }
+    .ctf-intro { text-align: left; }
+    .ctf-platforms { align-items: stretch; }
+    .cisco-track-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .cisco-track-badge { margin-left: 0; }
 }

@@ -5,10 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Portfolio de Kossivi Jacques Junior AGBENONZAN, étudiant en cybersécurité et réseaux: projets Python, cloud, sécurité et infrastructures réseau.">
     <meta name="theme-color" content="#10a5a5">
+
+    <!-- ── Open Graph / Social ── -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="JJKA · Cybersécurité & Réseaux | Abidjan">
+    <meta property="og:description" content="Portfolio de Kossivi Jacques Junior AGBENONZAN — Étudiant en Cybersécurité & Réseaux, CTF player, Python dev.">
+    <meta property="og:image" content="document/1770812254707.png">
+    <meta property="og:url" content="">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="JJKA · Cybersécurité & Réseaux">
+    <meta name="twitter:description" content="Portfolio de Kossivi Jacques Junior AGBENONZAN — Étudiant en Cybersécurité & Réseaux.">
+    <meta name="twitter:image" content="document/1770812254707.png">
+
+    <!-- Favicon emoji -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+
     <title>JJKA · Cybersécurité & Réseaux | Abidjan</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <!-- EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+      (function(){
+          emailjs.init({ publicKey: "uhlYBSBZTZaJGeUlb" }); // ← remplace par ta clé EmailJS
+      })();
+    </script>
 </head>
 <body>
     <div class="scroll-progress" aria-hidden="true"></div>
@@ -21,6 +43,7 @@
                 <li><a class="nav-link" href="#apropos">À propos</a></li>
                 <li><a class="nav-link" href="#competences">Compétences</a></li>
                 <li><a class="nav-link" href="#projets">Projets</a></li>
+                <li><a class="nav-link" href="#ctf">CTF</a></li>
                 <li><a class="nav-link" href="#parcours">Parcours</a></li>
                 <li><a class="nav-link" href="#certifications">Certifications</a></li>
                 <li><a class="nav-link" href="#contact">Contact</a></li>
@@ -63,7 +86,7 @@
                     </h1>
                     <h2 class="hero-role">
                         <span class="role-bracket">[</span>
-                        Étudiant en Cybersécurité &amp; Réseaux
+                        <span id="typing-text"></span><span class="typing-cursor">|</span>
                         <span class="role-bracket">]</span>
                     </h2>
                     <p class="hero-desc">
@@ -75,6 +98,7 @@
                         <span><i class="fas fa-shield-halved"></i> Cyber défense</span>
                         <span><i class="fab fa-python"></i> Python &amp; Automatisation</span>
                         <span><i class="fas fa-network-wired"></i> Réseaux &amp; Cloud</span>
+                        <span><i class="fas fa-flag"></i> CTF Player</span>
                     </div>
                     <div class="hero-buttons">
                         <a href="#contact" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Me Contacter</a>
@@ -83,10 +107,11 @@
                     </div>
                     <div class="social-links">
                         <a href="https://www.linkedin.com/in/kossivi-jacques-junior-agbenonzan-235bb1358" target="_blank" rel="noreferrer" aria-label="LinkedIn" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/JunRoot29" target="_blank" rel="noreferrer" aria-label="GitHub" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="https://tryhackme.com/p/JuniorKA" target="_blank" rel="noreferrer" aria-label="TryHackMe" class="social-link"><i class="fas fa-skull-crossbones"></i></a>
                         <a href="https://web.facebook.com/junior.kossivi.2025" target="_blank" rel="noreferrer" aria-label="Facebook" class="social-link"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://www.instagram.com/juniork_2902/" target="_blank" rel="noreferrer" aria-label="Instagram" class="social-link"><i class="fab fa-instagram"></i></a>
                         <a href="mailto:Junioragbenonzan31@gmail.com" aria-label="Email" class="social-link"><i class="fas fa-envelope"></i></a>
-                        <a href="https://github.com/JunRoot29" target="_blank" rel="noreferrer" aria-label="GitHub" class="social-link"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
 
@@ -138,19 +163,20 @@
                     <p>Technologies maîtrisées</p>
                 </div>
                 <div class="stat-item">
+                    <div class="stat-icon-wrap"><i class="fas fa-flag"></i></div>
+                    <h3 class="stat-number" data-count="15">0</h3>
+                    <p>Challenges CTF résolus</p>
+                </div>
+                <div class="stat-item">
                     <div class="stat-icon-wrap"><i class="fas fa-graduation-cap"></i></div>
                     <h3 class="stat-number" data-count="3">0</h3>
                     <p>Années d'études</p>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-icon-wrap"><i class="fas fa-language"></i></div>
-                    <h3 class="stat-number" data-count="2">0</h3>
-                    <p>Langues parlées</p>
-                </div>
-                <div class="stat-item">
                     <div class="stat-icon-wrap"><i class="fas fa-award"></i></div>
                     <h3 class="stat-number" data-count="4">0</h3>
                     <p>Certifications obtenues</p>
+                </div>
             </div>
         </div>
     </section>
@@ -168,7 +194,8 @@
                     <p>
                         Passionné par Python, la cybersécurité et l'analyse des réseaux, je développe des compétences solides en conception,
                         sécurisation et optimisation des infrastructures informatiques. Curieux et méthodique, je m'investis dans l'apprentissage
-                        pratique des protocoles réseaux et des technologies de sécurité.
+                        pratique des protocoles réseaux et des technologies de sécurité — et je perfectionne mes capacités offensives et défensives
+                        à travers les challenges CTF sur picoCTF et TryHackMe.
                     </p>
                     <div class="about-info">
                         <div class="info-item">
@@ -262,15 +289,15 @@
                             </div>
                         </div>
                         <div class="skill-item">
-                            <div class="skill-top"><span class="skill-name">C</span><span class="skill-pct">70%</span></div>
-                            <div class="skill-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" aria-label="C 70%">
-                                <div class="skill-level" data-level="70"></div>
+                            <div class="skill-top"><span class="skill-name">HTML / CSS</span><span class="skill-pct">75%</span></div>
+                            <div class="skill-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" aria-label="HTML CSS 75%">
+                                <div class="skill-level" data-level="75"></div>
                             </div>
                         </div>
                         <div class="skill-item">
-                            <div class="skill-top"><span class="skill-name">HTML &amp; CSS</span><span class="skill-pct">75%</span></div>
-                            <div class="skill-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" aria-label="HTML CSS 75%">
-                                <div class="skill-level" data-level="75"></div>
+                            <div class="skill-top"><span class="skill-name">Bash / Scripting</span><span class="skill-pct">70%</span></div>
+                            <div class="skill-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" aria-label="Bash 70%">
+                                <div class="skill-level" data-level="70"></div>
                             </div>
                         </div>
                     </div>
@@ -567,6 +594,129 @@
         </div>
     </section>
 
+    <!-- ═══ CTF & HACKING ═══ -->
+    <section id="ctf" class="section ctf-section">
+        <div class="container">
+            <div class="section-head">
+                <span class="section-eyebrow">Compétences offensives</span>
+                <h2 class="section-title">CTF &amp; <span class="highlight">Hacking</span></h2>
+            </div>
+
+            <div class="ctf-intro">
+                <p>Je participe régulièrement à des challenges CTF (Capture The Flag) pour affûter mes compétences en sécurité offensive et défensive. Mes write-ups sont publiés sur GitHub pour partager les solutions et la méthodologie.</p>
+                <div class="ctf-platforms">
+                    <a href="https://github.com/TankRoot29/pico-ctf-writeups" target="_blank" rel="noreferrer" class="ctf-platform-card">
+                        <div class="ctf-platform-icon"><i class="fab fa-github"></i></div>
+                        <div class="ctf-platform-info">
+                            <span class="ctf-platform-name">picoCTF Write-ups</span>
+                            <span class="ctf-platform-sub">github.com/TankRoot29</span>
+                        </div>
+                        <i class="fas fa-external-link-alt ctf-platform-arrow"></i>
+                    </a>
+                    <a href="https://tryhackme.com" target="_blank" rel="noreferrer" class="ctf-platform-card">
+                        <div class="ctf-platform-icon thm-icon"><i class="fas fa-skull-crossbones"></i></div>
+                        <div class="ctf-platform-info">
+                            <span class="ctf-platform-name">TryHackMe</span>
+                            <span class="ctf-platform-sub">Rooms &amp; Parcours actifs</span>
+                        </div>
+                        <i class="fas fa-external-link-alt ctf-platform-arrow"></i>
+                    </a>
+                    <a href="https://picoctf.org" target="_blank" rel="noreferrer" class="ctf-platform-card">
+                        <div class="ctf-platform-icon pico-icon"><i class="fas fa-flag"></i></div>
+                        <div class="ctf-platform-info">
+                            <span class="ctf-platform-name">picoCTF</span>
+                            <span class="ctf-platform-sub">Challenges résolus &amp; documentés</span>
+                        </div>
+                        <i class="fas fa-external-link-alt ctf-platform-arrow"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="ctf-categories-grid">
+                <div class="ctf-cat-card">
+                    <div class="ctf-cat-icon"><i class="fas fa-globe"></i></div>
+                    <h3>Web Exploitation</h3>
+                    <p>Injection SQL, XSS, IDOR, bypass d'authentification, analyse de cookies et sessions.</p>
+                    <div class="ctf-cat-tags"><span>SQLi</span><span>XSS</span><span>IDOR</span></div>
+                </div>
+                <div class="ctf-cat-card">
+                    <div class="ctf-cat-icon"><i class="fas fa-lock-open"></i></div>
+                    <h3>Cryptographie</h3>
+                    <p>Chiffrement symétrique/asymétrique, RSA, XOR, Caesar, analyse de fréquences.</p>
+                    <div class="ctf-cat-tags"><span>RSA</span><span>XOR</span><span>Base64</span></div>
+                </div>
+                <div class="ctf-cat-card">
+                    <div class="ctf-cat-icon"><i class="fas fa-terminal"></i></div>
+                    <h3>General Skills</h3>
+                    <p>Linux, Bash, Python scripting, manipulation de fichiers, pipes et redirections.</p>
+                    <div class="ctf-cat-tags"><span>Linux</span><span>Bash</span><span>Python</span></div>
+                </div>
+                <div class="ctf-cat-card">
+                    <div class="ctf-cat-icon"><i class="fas fa-search"></i></div>
+                    <h3>Forensics &amp; OSINT</h3>
+                    <p>Analyse de métadonnées, fichiers cachés, stéganographie, investigation réseau.</p>
+                    <div class="ctf-cat-tags"><span>Stégano</span><span>PCAP</span><span>Metadata</span></div>
+                </div>
+            </div>
+
+            <!-- Parcours Cisco Cyberanalyste -->
+            <div class="cisco-track">
+                <div class="cisco-track-header">
+                    <div class="cisco-track-icon"><i class="fas fa-route"></i></div>
+                    <div>
+                        <h3>Parcours Cisco · Cyberanalyste Junior</h3>
+                        <p>Certification professionnelle en cours — Cisco Networking Academy</p>
+                    </div>
+                    <span class="cisco-track-badge">En cours</span>
+                </div>
+                <div class="cisco-track-modules">
+                    <div class="cisco-module cisco-module--done">
+                        <div class="cisco-module-dot"></div>
+                        <div class="cisco-module-content">
+                            <span class="cisco-module-name">Introduction à la Cybersécurité</span>
+                            <span class="cisco-module-status done">✓ Complété</span>
+                        </div>
+                    </div>
+                    <div class="cisco-module cisco-module--done">
+                        <div class="cisco-module-dot"></div>
+                        <div class="cisco-module-content">
+                            <span class="cisco-module-name">Networking Basics</span>
+                            <span class="cisco-module-status done">✓ Complété</span>
+                        </div>
+                    </div>
+                    <div class="cisco-module cisco-module--done">
+                        <div class="cisco-module-dot"></div>
+                        <div class="cisco-module-content">
+                            <span class="cisco-module-name">Networking Devices &amp; Initial Configuration</span>
+                            <span class="cisco-module-status done">✓ Complété</span>
+                        </div>
+                    </div>
+                    <div class="cisco-module cisco-module--active">
+                        <div class="cisco-module-dot"></div>
+                        <div class="cisco-module-content">
+                            <span class="cisco-module-name">Endpoint Security</span>
+                            <span class="cisco-module-status active">⟳ En cours</span>
+                        </div>
+                    </div>
+                    <div class="cisco-module cisco-module--pending">
+                        <div class="cisco-module-dot"></div>
+                        <div class="cisco-module-content">
+                            <span class="cisco-module-name">Network Defense</span>
+                            <span class="cisco-module-status pending">À venir</span>
+                        </div>
+                    </div>
+                    <div class="cisco-module cisco-module--pending">
+                        <div class="cisco-module-dot"></div>
+                        <div class="cisco-module-content">
+                            <span class="cisco-module-name">Cyber Threat Management</span>
+                            <span class="cisco-module-status pending">À venir</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ═══ PARCOURS ═══ -->
     <section id="parcours" class="section timeline">
         <div class="container">
@@ -654,7 +804,6 @@
                     <p class="cert-issuer"><i class="fas fa-building"></i> Cisco Networking Academy</p>
                     <p class="cert-date"><i class="fas fa-calendar-check"></i> Émise le <strong>févr. 2026</strong></p>
                     <a href="https://www.credly.com/badges/8c8edaf0-68df-4063-8944-5a7971641e2b/public_url" target="_blank" rel="noreferrer" class="cert-link">
-                        <i class="fab fa-cc-visa" style="display:none"></i>
                         <i class="fas fa-external-link-alt"></i> Voir sur Credly
                     </a>
                 </div>
@@ -689,9 +838,6 @@
                     </a>
                 </div>
 
-
-
-
                 <div class="cert-card cert-card--pending">
                     <div class="cert-card-top">
                         <div class="cert-logo cert-logo--pending">
@@ -707,11 +853,25 @@
                     </span>
                 </div>
 
+                <div class="cert-card cert-card--pending">
+                    <div class="cert-card-top">
+                        <div class="cert-logo cert-logo--pending">
+                            <i class="fas fa-user-secret"></i>
+                        </div>
+                        <div class="cert-badge-label cert-badge-label--pending">En cours</div>
+                    </div>
+                    <h3>Junior Cybersecurity Analyst</h3>
+                    <p class="cert-issuer"><i class="fas fa-building"></i> Cisco Networking Academy</p>
+                    <p class="cert-date cert-date--pending"><i class="fas fa-hourglass-half"></i> Parcours cyberanalyste en cours</p>
+                    <span class="cert-link cert-link--pending">
+                        <i class="fas fa-spinner fa-spin"></i> Bientôt disponible
+                    </span>
+                </div>
 
                 <div class="cert-card cert-card--pending">
                     <div class="cert-card-top">
                         <div class="cert-logo cert-logo--pending">
-                            <i class="fab fa-fortnet"></i>
+                            <i class="fas fa-shield-virus"></i>
                         </div>
                         <div class="cert-badge-label cert-badge-label--pending">En cours</div>
                     </div>
@@ -723,11 +883,10 @@
                     </span>
                 </div>
 
-
                 <div class="cert-card cert-card--pending">
                     <div class="cert-card-top">
                         <div class="cert-logo cert-logo--pending">
-                            <i class="fab fa-fortnet"></i>
+                            <i class="fas fa-network-wired"></i>
                         </div>
                         <div class="cert-badge-label cert-badge-label--pending">En cours</div>
                     </div>
@@ -738,7 +897,6 @@
                         <i class="fas fa-spinner fa-spin"></i> Bientôt disponible
                     </span>
                 </div>
-
 
             </div>
         </div>
@@ -783,22 +941,23 @@
                 </div>
                 <div class="contact-form">
                     <h3 class="form-title">Envoyer un message</h3>
+                    <!-- EmailJS form — remplace YOUR_SERVICE_ID et YOUR_TEMPLATE_ID dans script.js -->
                     <form id="contactForm" novalidate>
                         <div class="form-group">
                             <label for="contact-name">Votre nom *</label>
-                            <input type="text" id="contact-name" name="name" placeholder="Jean Dupont" required autocomplete="name">
+                            <input type="text" id="contact-name" name="from_name" placeholder="Jean Dupont" required autocomplete="name">
                         </div>
                         <div class="form-group">
                             <label for="contact-email">Votre email *</label>
-                            <input type="email" id="contact-email" name="email" placeholder="jean@exemple.com" required autocomplete="email">
+                            <input type="email" id="contact-email" name="reply_to" placeholder="jean@exemple.com" required autocomplete="email">
                         </div>
                         <div class="form-group">
                             <label for="contact-message">Votre message *</label>
                             <textarea id="contact-message" name="message" placeholder="Décrivez votre projet ou votre demande..." rows="5" required></textarea>
                         </div>
-                        <p class="contact-help"><i class="fas fa-info-circle"></i> Ce formulaire ouvre votre application email avec un message prérempli.</p>
-                        <button type="submit" class="btn btn-primary btn-submit">
-                            <i class="fas fa-paper-plane"></i> Envoyer le Message
+                        <p class="contact-help"><i class="fas fa-paper-plane"></i> Le message sera envoyé directement à mon adresse email.</p>
+                        <button type="submit" class="btn btn-primary btn-submit" id="submitBtn">
+                            <i class="fas fa-paper-plane"></i> <span id="submitBtnText">Envoyer le Message</span>
                         </button>
                     </form>
                 </div>
@@ -818,6 +977,7 @@
                     <a href="#apropos">À propos</a>
                     <a href="#competences">Compétences</a>
                     <a href="#projets">Projets</a>
+                    <a href="#ctf">CTF</a>
                     <a href="#parcours">Parcours</a>
                     <a href="#certifications">Certifications</a>
                     <a href="#contact">Contact</a>
