@@ -247,8 +247,8 @@ if (contactForm) {
 
         try {
             await emailjs.send(
-                'VOTRE_SERVICE_ID',   // ← remplace par ton Service ID EmailJS
-                'VOTRE_TEMPLATE_ID',  // ← remplace par ton Template ID EmailJS
+                'service_v7ilkd5',   // ← remplace par ton Service ID EmailJS
+                'template_4nmy8op',  // ← remplace par ton Template ID EmailJS
                 { from_name: name, reply_to: email, message }
             );
             showToast('✅ Message envoyé avec succès !');
