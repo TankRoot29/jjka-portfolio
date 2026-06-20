@@ -11,7 +11,7 @@
     <meta property="og:title" content="JJKA · Cybersécurité & Réseaux | Abidjan">
     <meta property="og:description" content="Portfolio de Kossivi Jacques Junior AGBENONZAN — Étudiant en Cybersécurité & Réseaux, CTF player, Python dev.">
     <meta property="og:image" content="document/1770812254707.png">
-    <meta property="og:url" content="https://jjka-portfolio.vercel.app">
+    <meta property="og:url" content="">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="JJKA · Cybersécurité & Réseaux">
     <meta name="twitter:description" content="Portfolio de Kossivi Jacques Junior AGBENONZAN — Étudiant en Cybersécurité & Réseaux.">
@@ -28,7 +28,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script type="text/javascript">
       (function(){
-          emailjs.init({ publicKey: "uhlYBSBZTZaJGeUlb" }); // ← remplace par ta clé EmailJS
+          emailjs.init({ publicKey: "VOTRE_PUBLIC_KEY" }); // ← remplace par ta clé EmailJS
       })();
     </script>
 </head>
@@ -154,7 +154,7 @@
             <div class="stats-grid">
                 <div class="stat-item">
                     <div class="stat-icon-wrap"><i class="fas fa-project-diagram"></i></div>
-                    <h3 class="stat-number" data-count="10">0</h3>
+                    <h3 class="stat-number" data-count="13">0</h3>
                     <p>Projets réalisés</p>
                 </div>
                 <div class="stat-item">
@@ -368,9 +368,11 @@
 
             <div class="project-filter" role="group" aria-label="Filtrer les projets">
                 <button class="filter-btn active" data-filter="all"><i class="fas fa-th-large"></i> Tous</button>
+                <button class="filter-btn" data-filter="mobile"><i class="fas fa-mobile-alt"></i> Mobile</button>
                 <button class="filter-btn" data-filter="web"><i class="fas fa-laptop-code"></i> Web Dev</button>
                 <button class="filter-btn" data-filter="security"><i class="fas fa-shield-halved"></i> Cybersécurité</button>
                 <button class="filter-btn" data-filter="cloud"><i class="fas fa-cloud"></i> Cloud/Réseaux</button>
+                <button class="filter-btn" data-filter="iot"><i class="fas fa-microchip"></i> IoT</button>
             </div>
 
             <div class="projects-grid">
@@ -572,9 +574,73 @@
                         </div>
                     </div>
                 </article>
-            </div>
+                <article class="project-card featured" data-category="mobile">
+                    <div class="project-card-top">
+                        <div class="project-icon"><i class="fas fa-map-location-dot"></i></div>
+                        <div class="project-cat-badge mobile-badge">Mobile</div>
+                    </div>
+                    <div class="featured-label">🌟 App publiée</div>
+                    <h3>CampusNav — UFHB</h3>
+                    <p>Application mobile de géolocalisation et navigation sur le campus de l'Université Félix Houphouët-Boigny d'Abidjan. Téléchargeable et disponible en ligne.</p>
+                    <div class="project-tech"><span>Mobile</span><span>GéoMapping</span><span>Navigation</span><span>UFHB</span></div>
+                    <div class="project-details">
+                        <h4>Fonctionnalités</h4>
+                        <ul>
+                            <li>Carte interactive du campus UFHB</li>
+                            <li>Navigation point à point en temps réel</li>
+                            <li>Localisation des bâtiments et salles</li>
+                            <li>Interface optimisée pour mobile</li>
+                        </ul>
+                        <div class="project-links">
+                            <a href="https://junior.devsione.ci/" target="_blank" class="project-link" rel="noreferrer"><i class="fas fa-external-link-alt"></i> Voir l'app</a>
+                        </div>
+                    </div>
+                </article>
 
-            <div class="project-categories">
+                <article class="project-card" data-category="iot">
+                    <div class="project-card-top">
+                        <div class="project-icon"><i class="fas fa-microchip"></i></div>
+                        <div class="project-cat-badge iot-badge">IoT</div>
+                    </div>
+                    <h3>IoT Parking Monitoring</h3>
+                    <p>Système complet de supervision d'un parking intelligent : détection ESP32 + capteurs ultrasons, transmission MQTT, métriques Prometheus et dashboard Grafana.</p>
+                    <div class="project-tech"><span>ESP32</span><span>MQTT</span><span>Prometheus</span><span>Grafana</span><span>Docker</span></div>
+                    <div class="project-details">
+                        <h4>Architecture</h4>
+                        <ul>
+                            <li>Détection véhicule HC-SR04 + servo moteur</li>
+                            <li>Broker HiveMQ → exporter Python</li>
+                            <li>Métriques Prometheus + dashboard Grafana</li>
+                            <li>Simulation Wokwi + déploiement Docker Compose</li>
+                        </ul>
+                        <div class="project-links">
+                            <a href="https://github.com/TankRoot29/Projet-IoT---parking-iot-service.git" target="_blank" class="project-link" rel="noreferrer"><i class="fab fa-github"></i> Dépôt</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card" data-category="cloud">
+                    <div class="project-card-top">
+                        <div class="project-icon"><i class="fas fa-server"></i></div>
+                        <div class="project-cat-badge cloud-badge">Réseaux</div>
+                    </div>
+                    <h3>Load Balancing DNS &amp; Web</h3>
+                    <p>Infrastructure haute disponibilité avec cluster DNS (BIND9) et ferme web (Apache2) répartis via iptables DNAT/NAT, émulés sous Kathara/Docker.</p>
+                    <div class="project-tech"><span>Kathara</span><span>iptables</span><span>BIND9</span><span>Apache2</span><span>Docker</span></div>
+                    <div class="project-details">
+                        <h4>Architecture</h4>
+                        <ul>
+                            <li>2 serveurs DNS racine + load balancer UDP/53</li>
+                            <li>2 serveurs web + load balancer TCP/80</li>
+                            <li>Répartition ~50/50 validée sur 100 requêtes</li>
+                            <li>Émulation réseau complète sous Kathara</li>
+                        </ul>
+                        <div class="project-links">
+                            <a href="https://github.com/TankRoot29/Projet-LoadBalancing.git" target="_blank" class="project-link" rel="noreferrer"><i class="fab fa-github"></i> Dépôt</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
                 <div class="category">
                     <div class="cat-icon-wrap"><i class="fas fa-laptop-code"></i></div>
                     <h3>Développement web</h3>
