@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'Étudiant Cybersécurité & Réseaux',
         'CTF Player · picoCTF & TryHackMe',
         'Cyberanalyste Junior (Cisco)',
-        'Développeur Python',
+        'Python Lover',
     ];
 
     let roleIndex = 0;
