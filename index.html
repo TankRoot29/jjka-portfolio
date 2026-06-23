@@ -154,7 +154,7 @@
             <div class="stats-grid">
                 <div class="stat-item">
                     <div class="stat-icon-wrap"><i class="fas fa-project-diagram"></i></div>
-                    <h3 class="stat-number" data-count="13">0</h3>
+                    <h3 class="stat-number" data-count="14">0</h3>
                     <p>Projets réalisés</p>
                 </div>
                 <div class="stat-item">
@@ -617,21 +617,22 @@
                     </div>
                 </article>
 
-                <article class="project-card" data-category="iot">
+                <article class="project-card featured" data-category="iot">
                     <div class="project-card-top">
                         <div class="project-icon"><i class="fas fa-microchip"></i></div>
                         <div class="project-cat-badge iot-badge">IoT</div>
                     </div>
-                    <h3>IoT Parking Monitoring</h3>
-                    <p>Système complet de supervision d'un parking intelligent : détection ESP32 + capteurs ultrasons, transmission MQTT, métriques Prometheus et dashboard Grafana.</p>
-                    <div class="project-tech"><span>ESP32</span><span>MQTT</span><span>Prometheus</span><span>Grafana</span><span>Docker</span></div>
+                    <div class="featured-label">⭐ Projet phare</div>
+                    <h3>IoT Smart Parking & Edge Security</h3>
+                    <p>Plateforme IoT distribuée de gestion intelligente d'un parking connecté : détection ESP32, Edge IDS embarqué, pipeline MQTT → Node-RED → InfluxDB → Grafana.</p>
+                    <div class="project-tech"><span>ESP32</span><span>MQTT</span><span>Node-RED</span><span>InfluxDB</span><span>Grafana</span><span>Docker</span></div>
                     <div class="project-details">
                         <h4>Architecture</h4>
                         <ul>
-                            <li>Détection véhicule HC-SR04 + servo moteur</li>
-                            <li>Broker HiveMQ → exporter Python</li>
-                            <li>Métriques Prometheus + dashboard Grafana</li>
-                            <li>Simulation Wokwi + déploiement Docker Compose</li>
+                            <li>HC-SR04 + DHT22 + LCD 16x2 + servo moteur</li>
+                            <li>Edge IDS embarqué : détection intrusions en temps réel</li>
+                            <li>Pipeline MQTT → Node-RED (ETL) → InfluxDB (time-series)</li>
+                            <li>Dashboard Grafana : parking + environnement + sécurité</li>
                         </ul>
                         <div class="project-links">
                             <a href="https://github.com/TankRoot29/Projet-IoT---parking-iot-service.git" target="_blank" class="project-link" rel="noreferrer"><i class="fab fa-github"></i> Dépôt</a>
@@ -660,8 +661,31 @@
                         </div>
                     </div>
                 </article>
+
+                <article class="project-card" data-category="cloud">
+                    <div class="project-card-top">
+                        <div class="project-icon"><i class="fas fa-music"></i></div>
+                        <div class="project-cat-badge cloud-badge">Réseaux</div>
+                    </div>
+                    <h3>AudioStream UDP</h3>
+                    <p>Diffusion de flux audio WAV en temps réel via UDP en Java, avec jitter buffer intelligent, réordonnancement des paquets et statistiques en direct (latence, pertes).</p>
+                    <div class="project-tech"><span>Java</span><span>UDP</span><span>Java Sound API</span><span>Jitter Buffer</span></div>
+                    <div class="project-details">
+                        <h4>Fonctionnalités</h4>
+                        <ul>
+                            <li>Streaming audio temps réel serveur → client</li>
+                            <li>Format audio dynamique dans le premier paquet</li>
+                            <li>Jitter buffer avec <code>ConcurrentSkipListMap</code></li>
+                            <li>Stats live : latence, paquets perdus, taille buffer</li>
+                        </ul>
+                        <div class="project-links">
+                            <a href="https://github.com/JunRoot29" target="_blank" class="project-link" rel="noreferrer"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </article>
             </div>
-                <div class="category">
+
+            <div class="project-categories">
                     <div class="cat-icon-wrap"><i class="fas fa-laptop-code"></i></div>
                     <h3>Développement web</h3>
                     <p>Projets frontend et backend avec technologies modernes</p>
